@@ -3,7 +3,7 @@
 import bsddb3 as bsddb
 import random
 
-DA_FILE = "/tmp/vanbelle_db"
+DA_FILE = "/tmp/vanbelle_db/first_db"
 DB_SIZE = 1000
 SEED = 10000000
 
@@ -11,7 +11,6 @@ def get_random():
     return random.randint(0, 63)
 def get_random_char():
     return chr(97 + random.randint(0, 25))
-
 
 def main():
     try:
