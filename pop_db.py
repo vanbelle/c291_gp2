@@ -1,10 +1,10 @@
-#file to populate databases -> the python3 sample program
+#file to populate btree -> the python3 sample program
 
 import bsddb3 as bsddb
 import random
 
-DA_FILE = "/tmp/vanbelle_db/first_db"
-DB_SIZE = 1000
+DA_FILE = "/tmp/vanbelle_db/test_db1"
+DB_SIZE = 100000
 SEED = 10000000
 
 def get_random():
@@ -29,8 +29,8 @@ def main():
         value = ""
         for i in range(vrng):
             value += str(get_random_char())
-        print (key)
-        print (value)
+        print ('key;'+key)
+        print ('value:'+value)
         print ("")
         key = key.encode(encoding='UTF-8')
         value = value.encode(encoding='UTF-8')

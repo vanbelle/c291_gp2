@@ -1,3 +1,10 @@
+import destroy_db
+import pop_db
+import retrieve_1
+import retrieve_2
+import retrieve_3
+
+
 while(1):
 	print('')
 	print('Main Menu')
