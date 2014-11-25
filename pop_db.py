@@ -3,8 +3,9 @@
 import bsddb3 as bsddb
 import random
 
-DA_FILE = "/tmp/vanbelle_db/test_db1"
-DB_SIZE = 100000
+DA_FILE = "/tmp/vanbelle_db/btree.db"
+DC_FILE = "/tmp/vanbelle_db/hash.db"
+DB_SIZE = 10
 SEED = 10000000
 
 def get_random():
@@ -18,6 +19,12 @@ def main():
     except:
         print("DB doesn't exist, creating a new one")
         db = bsddb.btopen(DA_FILE, "c")
+        
+    try:
+        dc = bsddb.hashopen(DC_FILE, "w")
+    except:
+        print("DB doesn't exist, creating a new one")
+        dc = bsddb.hashopen(DC_FILE, "c")        
     random.seed(SEED)
 
     for index in range(DB_SIZE):
@@ -35,10 +42,15 @@ def main():
         key = key.encode(encoding='UTF-8')
         value = value.encode(encoding='UTF-8')
         db[key] = value
+        dc[key] = value
     try:
         db.close()
     except Exception as e:
         print (e)
+    try:
+        dc.close()
+    except Exception as e:
+        print (e)        
 
 if __name__ == "__main__":
     main()
