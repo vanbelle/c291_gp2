@@ -17,13 +17,13 @@ def main():
     try:
         db = bsddb.btopen(DA_FILE, "w")
     except:
-        print("DB doesn't exist, creating a new one")
+        print("Btree doesn't exist, creating a new one")
         db = bsddb.btopen(DA_FILE, "c")
         
     try:
         dc = bsddb.hashopen(DC_FILE, "w")
     except:
-        print("DB doesn't exist, creating a new one")
+        print("Hash table doesn't exist, creating a new one")
         dc = bsddb.hashopen(DC_FILE, "c")        
     random.seed(SEED)
 
@@ -36,7 +36,7 @@ def main():
         value = ""
         for i in range(vrng):
             value += str(get_random_char())
-        print ('key;'+key)
+        print ('key:'+key)
         print ('value:'+value)
         print ("")
         key = key.encode(encoding='UTF-8')

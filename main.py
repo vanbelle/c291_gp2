@@ -19,25 +19,20 @@ while(1):
 	while(1):
 		if i == '1':
 			
-			break;
-
+			break
 		elif i == '2':
 			
-			break;
-
+			break
 		elif i == '3':
 			
-			break;
-
+			break
 		elif i == '4':
 			
-			break;
+			break
 		elif i == '5':
 			
 			break		
-
-		elif i == '5':
+		elif i == '6':
 			exit()
-
 		else: 
 			i = input('Invalid Entry, Select Option 1-6:')
