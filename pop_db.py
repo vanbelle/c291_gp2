@@ -13,7 +13,7 @@ def get_random():
 def get_random_char():
     return chr(97 + random.randint(0, 25))
 
-def main():
+def main(startCommand):
     try:
         db = bsddb.btopen(DA_FILE, "w")
     except:
@@ -45,6 +45,7 @@ def main():
         dc[key] = value
     try:
         db.close()
+        return
     except Exception as e:
         print (e)
     try:
