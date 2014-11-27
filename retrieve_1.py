@@ -15,10 +15,10 @@ class retrieve_1(object):
         elif type_option == "hash":
             self.file = "/tmp/vanbelle_db/hash.db"
             self.db = bsddb.hashopen(self.file,'r')
-            
+            self.value = (self.db[key.encode(encoding='UTF-8')])
         try:
             self.db.close()
         except Exception as e:
-            print (e)        
-        print(self.value.decode(encoding='UTF-8'))
+            print (e)   
+        self.value =  self.value.decode(encoding='UTF-8')    
         print('this function took %s seconds to run' %(time.time() - self.start_time))

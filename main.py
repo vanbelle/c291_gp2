@@ -36,7 +36,7 @@ while(1):
 		elif i == '2':
 			key = input('Enter a key: ')
 			value = retrieve_1.retrieve_1(inputCommand,key)
-			print (key,value)
+			print (key,value.value)
 			break
 		elif i == '3':
 			data = input('Enter data: ')
