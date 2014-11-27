@@ -16,8 +16,6 @@ def handleInputCommand():
 
 handleInputCommand()
 
-print(startCommand1)
-print(startCommand2)
 while(1):
 	print('')
 	print('Main Menu')
@@ -33,7 +31,7 @@ while(1):
 		i = input('Select Option (1-6):')
 		print('')
 		if i == '1':
-			p = pop_db.main(inputCommand)
+			p = pop_db.pop_db(inputCommand)
 			break
 		elif i == '2':
 			key = input('Enter a key: ')
