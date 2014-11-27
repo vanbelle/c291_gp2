@@ -41,6 +41,7 @@ while(1):
 		elif i == '3':
 			data = input('Enter data: ')
 			r = retrieve_2.retrieve_2(inputCommand,data)
+			print(r.keys)
 			break
 		elif i == '4':
 			low = input('Enter the lower bound: ')
