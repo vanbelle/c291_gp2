@@ -3,18 +3,20 @@ import time
 import bsddb3 as bsddb
 
 class retrieve_3(object):
-    def __init__(self,table,low,high):
+    def __init__(self,type_option,low,high):
         super(retrieve_3,self).__init__()
         self.start_time = time.time()
         self.keys = []
         
-        if type_option == 1:
-            self.file = "/tmp/vanbelle_db/btree.db"
+        if type_option == 'btree':
+            self.file = '/tmp/vanbelle_db/btree.db'
             self.db = bsddb.btopen(self.file,'r')
-        elif type_option == 2:
-            self.file = "/tmp/vanbelle_db/hash.db"
-            self.db = bsddb.hashopen(self.file,'r')    
-        
+        elif type_option == 'hash':
+            self.file = '/tmp/vanbelle_db/hash.db'
+            self.db = bsddb.hashopen(self.file,'r')
+        elif type_option == 'indexfile':
+            #index search
+            return self.keys
         self.cursor = self.db.cursor()    
         self.rec = self.cursor.first()
         while self.rec:
