@@ -17,6 +17,7 @@ class retrieve_3(object):
         elif type_option == 'indexfile':
             #index search
             return self.keys
+        
         self.cursor = self.db.cursor()    
         self.rec = self.cursor.first()
         while self.rec:
@@ -29,5 +30,5 @@ class retrieve_3(object):
         except Exception as e:
             print (e)        
         print('this function retrived %s records' %len(self.records))
-        print('this function took %s seconds to run' %time.time() - self.start_time)
+        print('this function took %s seconds to run' %(time.time() - self.start_time))
         return self.keys

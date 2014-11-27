@@ -30,5 +30,5 @@ class retrieve_2(object):
         except Exception as e:
             print (e)        
         print('this function retrived %s records' %len(self.keys))
-        print('this function took %s seconds to run' %time.time() - self.start_time)
+        print('this function took %s seconds to run' %(time.time() - self.start_time))
         return self.keys
