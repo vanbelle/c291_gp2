@@ -7,10 +7,11 @@ class retrieve_1(object):
         super(retrieve_1,self).__init__()
         self.start_time = time.time()
         
-        if type_option == 1:
+        if type_option == "btree":
             self.file = "/tmp/vanbelle_db/btree.db"
             self.db = bsddb.btopen(self.file,'r')
-        elif type_option == 2:
+            print(self.db[1])
+        elif type_option == "hash":
             self.file = "/tmp/vanbelle_db/hash.db"
             self.db = bsddb.hashopen(self.file,'r')
             
