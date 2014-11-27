@@ -7,7 +7,7 @@ import random
 class pop_db(object):
     def __init__(self, startCommand):
         super(pop_db, self).__init__()
-        DB_SIZE = 10
+        DB_SIZE = 100000
         SEED = 10000000
         random.seed(SEED)
 

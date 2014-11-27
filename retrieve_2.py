@@ -15,8 +15,7 @@ class retrieve_2(object):
             self.file = '/tmp/vanbelle_db/hash.db'
             db = bsddb.hashopen(self.file,'r')    
         elif type_option == 'indexfile':
-            #index search
-            #return self.keys   
+            #index search  
             pass
 
         for key, value in db.items():
@@ -32,4 +31,3 @@ class retrieve_2(object):
             print (e)        
         print('this function retrived %s records' %len(self.keys))
         print('this function took %s seconds to run' %(time.time() - start_time))
-        #return self.keys

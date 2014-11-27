@@ -41,13 +41,14 @@ while(1):
 		elif i == '3':
 			data = input('Enter data: ')
 			r = retrieve_2.retrieve_2(inputCommand,data)
-			print(r.keys)
+			for item in r.keys:
+				print(r.keys)
 			break
 		elif i == '4':
 			low = input('Enter the lower bound: ')
 			high = input('Enter the upper bound: ')
-			values = retrieve_3.retrieve_3(inputCommand,low,high)
-			for pair in values:
+			val = retrieve_3.retrieve_3(inputCommand,low,high)
+			for pair in val.keys:
 				print (pair)
 			break
 		elif i == '5':

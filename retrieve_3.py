@@ -5,30 +5,27 @@ import bsddb3 as bsddb
 class retrieve_3(object):
     def __init__(self,type_option,low,high):
         super(retrieve_3,self).__init__()
-        self.start_time = time.time()
+        start_time = time.time()
         self.keys = []
         
         if type_option == 'btree':
-            self.file = '/tmp/vanbelle_db/btree.db'
-            self.db = bsddb.btopen(self.file,'r')
+            file = '/tmp/vanbelle_db/btree.db'
+            db = bsddb.btopen(file,'r')
         elif type_option == 'hash':
-            self.file = '/tmp/vanbelle_db/hash.db'
-            self.db = bsddb.hashopen(self.file,'r')
+            file = '/tmp/vanbelle_db/hash.db'
+            db = bsddb.hashopen(file,'r')
         elif type_option == 'indexfile':
             #index search
-            return self.keys
+            pass
         
-        self.cursor = self.db.cursor()    
-        self.rec = self.cursor.first()
-        while self.rec:
-            if self.rec[0] >= low and self.rec[0] <= high:
-                self.keys.append(self.rec)
-            self.rec = cursor.next() 
-            
+        for key, value in db.items():
+            key = key.decode(encoding='UTF-8')
+            value = value.decode(encoding='UTF-8')             
+            if key >= low and key <= high:
+                self.keys.append((key,value))
         try:
-            self.db.close()
+            db.close()
         except Exception as e:
             print (e)        
-        print('this function retrived %s records' %len(self.records))
-        print('this function took %s seconds to run' %(time.time() - self.start_time))
-        return self.keys
+        print('this function retrived %s records' %len(self.keys))
+        print('this function took %s seconds to run' %(time.time() - sstart_time))
