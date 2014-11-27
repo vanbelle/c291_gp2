@@ -3,7 +3,7 @@ import time
 import bsddb3 as bsddb
 
 class retrieve_2(object):
-    def __init(self, table, data):
+    def __init__(self, type_option, data):
         super(retrieve_2,self).__init__()
         self.start_time = time.time()
         self.keys = []
