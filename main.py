@@ -40,16 +40,14 @@ while(1):
 			break
 		elif i == '3':
 			data = input('Enter data: ')
-			keys = retrieve_2.retrieve_2(inputCommand,data)
-			for i in keys:
-				print (key,data)
+			r = retrieve_2.retrieve_2(inputCommand,data)
 			break
 		elif i == '4':
 			low = input('Enter the lower bound: ')
 			high = input('Enter the upper bound: ')
 			values = retrieve_3.retrieve_3(inputCommand,low,high)
 			for pair in values:
-				print (pair[0],pair[1])
+				print (pair)
 			break
 		elif i == '5':
 			d = destroy_db.destroy_db()
