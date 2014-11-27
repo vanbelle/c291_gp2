@@ -17,7 +17,7 @@ class retrieve_3(object):
         self.cursor = self.db.cursor()    
         self.rec = self.cursor.first()
         while self.rec:
-            if self.rec[0] >= low && self.rec[0] <= high:
+            if self.rec[0] >= low and self.rec[0] <= high:
                 self.keys.append(self.rec)
             self.rec = cursor.next() 
             
