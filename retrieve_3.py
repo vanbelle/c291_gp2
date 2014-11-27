@@ -4,6 +4,7 @@ import bsddb3 as bsddb
 
 class retrieve_3(object):
     def __init__(self,table,low,high):
+        super(retrieve_3,self).__init__()
         self.start_time = time.time()
         self.keys = []
         
