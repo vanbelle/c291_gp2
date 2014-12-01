@@ -3,37 +3,36 @@
 import bsddb3 as bsddb
 import random
 
-
 class pop_db(object):
     def __init__(self, startCommand):
         super(pop_db, self).__init__()
         DB_SIZE = 100000
         SEED = 10000000
         random.seed(SEED)
-
-        if startCommand == "btree":
-            DA_FILE = "/tmp/vanbelle_db/btree.db"
-            try:
-                db = bsddb.btopen(DA_FILE, "w")
-            except:
-                print("Btree doesn't exist, creating a new one")
-                db = bsddb.btopen(DA_FILE, "c")
-
-        elif startCommand == "hash":
+        
+        if startCommand == "hash":
             DC_FILE = "/tmp/vanbelle_db/hash.db"
             try:
                 dc = bsddb.hashopen(DC_FILE, "w")
             except:
                 print("Hash table doesn't exist, creating a new one")
-                dc = bsddb.hashopen(DC_FILE, "c")          
-        
-        elif startCommand == "hash":
-            DD_FILE = "/tmp/vanbelle_db/index.db"
+                dc = bsddb.hashopen(DC_FILE, "c")
+                
+        elif startCommand == "btree" or startCommand == 'indexfile':
+            DA_FILE = "/tmp/vanbelle_db/btree.db"
             try:
-                dd = bsddb.hashopen(DD_FILE, "w")
+                db = bsddb.btopen(DA_FILE, "w")
             except:
-                print("Index File doesn't exist, creating a new one")
-                dd = bsddb.hashopen(DD_FILE, "c") 
+                print("Btree doesn't exist, creating a new one")
+                db = bsddb.btopen(DA_FILE, "c")         
+        
+            if startCommand == "indexfile":
+                DD_FILE = "/tmp/vanbelle_db/index.db"
+                try:
+                    dd = bsddb.btopen(DD_FILE, "w").associate(db,key,flags = 0, txn = None)
+                except:
+                    print("Index File doesn't exist, creating a new one")
+                    dd = bsddb.btopen(DD_FILE, "c").associate(db,key,flags = 0, txn = None)
 
         for index in range(DB_SIZE):
             krng = 64 + self.get_random()
@@ -51,14 +50,13 @@ class pop_db(object):
             key = key.encode(encoding='UTF-8')
             value = value.encode(encoding='UTF-8')
             
-            if startCommand == "btree":
+            if startCommand == "btree" or startCommand == 'indexfile':
                 db[key] = value
 
             elif startCommand == "hash":
                 dc[key] = value
-            elif startcommand == "indexfile":
-                dd[key] = value    
-        if startCommand == "btree":
+                
+        if startCommand == "btree" or startCommand == 'indexfile':
             try:
                 db.close()
             except Exception as e:
