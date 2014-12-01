@@ -27,6 +27,14 @@ class pop_db(object):
                 print("Hash table doesn't exist, creating a new one")
                 dc = bsddb.hashopen(DC_FILE, "c")          
         
+        elif startCommand == "hash":
+            DD_FILE = "/tmp/vanbelle_db/index.db"
+            try:
+                dd = bsddb.hashopen(DD_FILE, "w")
+            except:
+                print("Index File doesn't exist, creating a new one")
+                dd = bsddb.hashopen(DD_FILE, "c") 
+
         for index in range(DB_SIZE):
             krng = 64 + self.get_random()
             key = ""
@@ -36,9 +44,10 @@ class pop_db(object):
             value = ""
             for i in range(vrng):
                 value += str(self.get_random_char())
-            print ('key:'+key)
-            print ('value:'+value)
-            print ("")
+            if index % 100 == 0: 
+                print ('key:'+key)
+                print ('value:'+value)
+                print ("")
             key = key.encode(encoding='UTF-8')
             value = value.encode(encoding='UTF-8')
             
@@ -47,7 +56,8 @@ class pop_db(object):
 
             elif startCommand == "hash":
                 dc[key] = value
-                
+            elif startcommand == "indexfile":
+                dd[key] = value    
         if startCommand == "btree":
             try:
                 db.close()
@@ -60,6 +70,12 @@ class pop_db(object):
             except Exception as e:
                 print (e)
     
+        elif startCommand == "indexfile":
+            try:
+                dd.close()
+            except Exception as e:
+                print (e)
+
     def get_random(self):
         return random.randint(0, 63)
     def get_random_char(self):
