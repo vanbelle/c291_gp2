@@ -5,7 +5,8 @@ import retrieve_2
 import retrieve_3
 import sys
 
-
+f = open("answers", "a", 1)
+n = '\n'
 
 def handleInputCommand(): 
 	global inputCommand
@@ -35,26 +36,34 @@ while(1):
 		elif i == '2':
 			key = input('Enter a key: ')
 			value = retrieve_1.retrieve_1(inputCommand,key)
-			print (key)
-			print(value.value)
+			f.write(key + n)
+			f.write(value.value + n)
+			f.write(n)
 			break
 		elif i == '3':
 			data = input('Enter data: ')
 			r = retrieve_2.retrieve_2(inputCommand,data)
-			#for item in r.keys:
-				#print(r.keys)
+			for item in r.keys:
+				f.write(item + n)
+				f.write(data + n)
+				f.write(n)
 			break
 		elif i == '4':
 			low = input('Enter the lower bound: ')
 			high = input('Enter the upper bound: ')
 			val = retrieve_3.retrieve_3(inputCommand,low,high)
-			#for pair in val.keys:
-			#	print (pair)
+			for item in val.keys:
+				f.write(item[0] + n)
+				f.write(item[1] + n)
+				f.write(n)
 			break
 		elif i == '5':
 			d = destroy_db.destroy_db()
 			break
 		elif i == '6':
+			f.seek(0)
+			f.truncate()
+			f.close()
 			sys.exit()
 		else: 
 			print('Invalid Entry')
