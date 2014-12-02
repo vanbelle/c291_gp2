@@ -63,7 +63,7 @@ class pop_db(object):
             elif startCommand == "hash":
                 dc[key] = value
                 
-            elif startCommand == "indexfile":
+            if startCommand == "indexfile":
                 dd[value] = key
                 
         if startCommand == "btree" or startCommand == 'indexfile':
@@ -78,7 +78,7 @@ class pop_db(object):
             except Exception as e:
                 print (e)
     
-        elif startCommand == "indexfile":
+        if startCommand == "indexfile":
             try:
                 dd.close()
             except Exception as e:

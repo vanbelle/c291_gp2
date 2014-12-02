@@ -42,12 +42,41 @@ class retrieve_2(object):
         elif type_option == 'indexfile':
             file = '/tmp/vanbelle_db/index.db'
             dc = bsddb.btopen(file,'r')
-            self.keys.append(dc[data.encode(encoding='UTF-8')]) 
-            for i in range(len(self.keys)):
-                self.keys[i] = self.keys[i].decode(encoding='UTF-8')
             try:
-                dc.close()
-            except Exception as e:
-                print (e)   
-            print('this function retrived %s records' %len(self.keys))
-            print('this function took %s microseconds to run' %((time.time() - start_time)*1000000))
+                self.keys.append(dc[data.encode(encoding='UTF-8')]) 
+                for i in range(len(self.keys)):
+                    self.keys[i] = self.keys[i].decode(encoding='UTF-8')
+                try:
+                    dc.close()
+                except Exception as e:
+                    print (e)
+                print('this function retrived %s records' %len(self.keys))
+                print('this function took %s microseconds to run' %((time.time() - start_time)*1000000))
+            except:
+                print('invalid data value')
+  
+                #try:    
+                    #self.value = (db[key.encode(encoding='UTF-8')]) 
+                    #try:
+                        #db.close()
+                    #except Exception as e:
+                        #print (e)   
+                    #self.value =  self.value.decode(encoding='UTF-8')    
+                    #print('this function took %s microseconds to run' %((time.time() - start_time)*1000000))
+                #except:
+                    #print('invalid key')     
+                    ##
+                    #datas = dc.keys()
+                    #for i in datas:
+                        #i = i.decode(encoding='UTF-8')
+                        #if i >= low and i <= high:
+                            #self.keys.append(dc[i.encode(encoding='UTF-8')])
+        
+                    #for i in range(len(self.keys)):
+                        #self.keys[i] = self.keys[i].decode(encoding='UTF-8')
+                    #try:
+                        #dc.close()
+                    #except Exception as e:
+                        #print (e)              
+                    #print('this function retrived %s records' %len(self.keys))
+                    #print('this function took %s microseconds to run' %((time.time() - start_time)*1000000))                    

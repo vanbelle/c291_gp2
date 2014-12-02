@@ -13,7 +13,7 @@ class retrieve_1(object):
             try:    
                 self.value = (db[key.encode(encoding='UTF-8')]) 
                 try:
-                    self.db.close()
+                    db.close()
                 except Exception as e:
                     print (e)   
                 self.value =  self.value.decode(encoding='UTF-8')    
@@ -27,7 +27,7 @@ class retrieve_1(object):
             try:    
                 self.value = (db[key.encode(encoding='UTF-8')]) 
                 try:
-                    self.db.close()
+                    db.close()
                 except Exception as e:
                     print (e)   
                     self.value =  self.value.decode(encoding='UTF-8')    
