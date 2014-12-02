@@ -50,10 +50,6 @@ class pop_db(object):
             value = ""
             for i in range(vrng):
                 value += str(self.get_random_char())
-            if index % 100 == 0: 
-                print ('key:'+key)
-                print ('value:'+value)
-                print ("")
             key = key.encode(encoding='UTF-8')
             value = value.encode(encoding='UTF-8')
             
