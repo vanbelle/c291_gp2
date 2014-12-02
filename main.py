@@ -36,26 +36,35 @@ while(1):
 		elif i == '2':
 			key = input('Enter a key: ')
 			value = retrieve_1.retrieve_1(inputCommand,key)
-			f.write(key + n)
-			f.write(value.value + n)
-			f.write(n)
+			try:
+				f.write(key + n)
+				f.write(value.value + n)
+				f.write(n)
+			except:
+				pass
 			break
 		elif i == '3':
 			data = input('Enter data: ')
 			r = retrieve_2.retrieve_2(inputCommand,data)
-			for item in r.keys:
-				f.write(item + n)
-				f.write(data + n)
-				f.write(n)
+			try:
+				for item in r.keys:
+					f.write(item + n)
+					f.write(data + n)
+					f.write(n)
+			except:
+				pass
 			break
 		elif i == '4':
 			low = input('Enter the lower bound: ')
 			high = input('Enter the upper bound: ')
 			val = retrieve_3.retrieve_3(inputCommand,low,high)
-			for item in val.keys:
-				f.write(item[0] + n)
-				f.write(item[1] + n)
-				f.write(n)
+			try:
+				for item in val.keys:
+					f.write(item[0] + n)
+					f.write(item[1] + n)
+					f.write(n)
+			except:
+				pass				
 			break
 		elif i == '5':
 			d = destroy_db.destroy_db()
