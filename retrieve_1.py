@@ -30,7 +30,7 @@ class retrieve_1(object):
                     db.close()
                 except Exception as e:
                     print (e)   
-                    self.value =  self.value.decode(encoding='UTF-8')    
+                self.value =  self.value.decode(encoding='UTF-8')    
                 print('this function took %s microseconds to run' %((time.time() - start_time)*1000000))
             except:
                 print('invalid key')
