@@ -26,9 +26,8 @@ while(1):
 	print('5. Destroy the database')
 	print('6. Quit')	
 	
-
+	i = input('Select Option (1-6):')
 	while(1):
-		i = input('Select Option (1-6):')
 		print('')
 		if i == '1':
 			p = pop_db.pop_db(inputCommand)
@@ -36,15 +35,20 @@ while(1):
 		elif i == '2':
 			key = input('Enter a key: ')
 			value = retrieve_1.retrieve_1(inputCommand,key)
+			print (key,value.value)
 			break
 		elif i == '3':
 			data = input('Enter data: ')
 			r = retrieve_2.retrieve_2(inputCommand,data)
+			for item in r.keys:
+				print(r.keys)
 			break
 		elif i == '4':
 			low = input('Enter the lower bound: ')
 			high = input('Enter the upper bound: ')
 			val = retrieve_3.retrieve_3(inputCommand,low,high)
+			for pair in val.keys:
+				print (pair)
 			break
 		elif i == '5':
 			d = destroy_db.destroy_db()
@@ -53,3 +57,4 @@ while(1):
 			sys.exit()
 		else: 
 			print('Invalid Entry')
+			i = input('Select Option (1-6):')

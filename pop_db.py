@@ -20,7 +20,7 @@ class pop_db(object):
                 print("Hash table doesn't exist, creating a new one")
                 dc.open(DC_FILE, None, bsddb.db.DB_HASH, bsddb.db.DB_CREATE)
                 
-        if startCommand == "btree":
+        if startCommand == "btree" or startCommand == 'indexfile':
             DA_FILE = "/tmp/vanbelle_db/btree.db"
             try:
                 db = bsddb.db.DB()
@@ -57,7 +57,7 @@ class pop_db(object):
             key = key.encode(encoding='UTF-8')
             value = value.encode(encoding='UTF-8')
             
-            if startCommand == "btree":
+            if startCommand == "btree" or startCommand == 'indexfile':
                 db[key] = value
 
             elif startCommand == "hash":
@@ -66,7 +66,7 @@ class pop_db(object):
             elif startCommand == "indexfile":
                 dd[value] = key
                 
-        if startCommand == "btree":
+        if startCommand == "btree" or startCommand == 'indexfile':
             try:
                 db.close()
             except Exception as e:

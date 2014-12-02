@@ -21,7 +21,7 @@ class retrieve_3(object):
             except Exception as e:
                 print (e)        
             print('this function retrived %s records' %len(self.keys))
-            print('this function took %s microseconds to run' %((time.time() - sstart_time)*1000000))
+            print('this function took %s microseconds to run' %((time.time() - start_time)*1000000))
             
         elif type_option == 'hash':
             file = '/tmp/vanbelle_db/hash.db'
@@ -36,7 +36,7 @@ class retrieve_3(object):
             except Exception as e:
                 print (e)        
             print('this function retrived %s records' %len(self.keys))
-            print('this function took %s microseconds to run' %((time.time() - sstart_time)*1000000))
+            print('this function took %s microseconds to run' %((time.time() - start_time)*1000000))
             
         elif type_option == 'indexfile':
             file = '/tmp/vanbelle_db/index.db'
@@ -49,7 +49,6 @@ class retrieve_3(object):
 
             for i in range(len(self.keys)):
                 self.keys[i] = self.keys[i].decode(encoding='UTF-8')
-            print(self.keys)
             try:
                 dc.close()
             except Exception as e:

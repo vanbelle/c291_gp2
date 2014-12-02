@@ -43,10 +43,8 @@ class retrieve_2(object):
             file = '/tmp/vanbelle_db/index.db'
             dc = bsddb.btopen(file,'r')
             self.keys.append(dc[data.encode(encoding='UTF-8')]) 
-            print(self.keys)
             for i in range(len(self.keys)):
                 self.keys[i] = self.keys[i].decode(encoding='UTF-8')
-            print(self.keys)
             try:
                 dc.close()
             except Exception as e:
