@@ -7,7 +7,7 @@ class retrieve_1(object):
         super(retrieve_1,self).__init__()
         self.start_time = time.time()
         self.value = None
-        if type_option == "btree":
+        if type_option == "btree" or type_option == 'indexfile':
             self.file = "/tmp/vanbelle_db/btree.db"
             self.db = bsddb.btopen(self.file,'r')  
             try:    
@@ -33,7 +33,4 @@ class retrieve_1(object):
                 print('this function took %s microseconds to run' %((time.time() - sstart_time)*1000000))
             except:
                 print('invalid key')
-            
-        elif type_option == 'indexfile':
-            pass
         
